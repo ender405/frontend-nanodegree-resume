@@ -4,4 +4,4 @@ var formattedName = HTMLheaderName.replace("%data%", name)
 var role = "Research Analyst"
 var formattedRole = HTMLheaderRole.replace("%data%", role)
 
-$("#header").append(formattedName,formattedRole)
+$("#header").prepend(formattedName + formattedRole)
