@@ -15,17 +15,6 @@ var bio = {
 	"skills" : ["Ruby", " Python ", " Javascript"]
 };
 
-var projects = {
-	"projects" : [
-		{
-			"title" : "Build an Online Resume",
-			"startDate" : 2014,
-			"endDate" : 2014,
-			"description" : "Build and format an interactive, online resume",
-			"images" : ["http://image1.com","http://image2.com"]
-		}
-	]
-}
 
 var work = {
 	"jobs" : [
@@ -104,7 +93,37 @@ function displayWork() {
 
 displayWork();
 
-$("#main").append(internationalizeButton);
+//remove internationalize button for now until I can style with CSS
+//$("#main").append(internationalizeButton);
+
+
+var projects = {
+	"projects" : [
+		{
+			"title" : "Build an Online Resume",
+			"startDate" : "2014",
+			"endDate" : "2014",
+			"description" : "Build and format an interactive, online resume",
+			"images" : ["http://upload.wikimedia.org/wikipedia/en/7/76/Nba-jam-dunk.png","http://justclaws.atari.org/graphics/pix/nba2.jpg"]
+		}
+	]
+}
+
+projects.display = function() {
+	for (project in projects.projects) {
+		$("#projects").append(HTMLprojectStart);
+		var formattedProjectTitle = HTMLprojectTitle.replace("%data%",projects.projects[project].title);
+		var formattedProjectDates = HTMLprojectDates.replace("%data%",projects.projects[project].startDate + " - " + projects.projects[project].endDate);
+		var formattedProjectDescription = HTMLprojectDescription.replace("%data%",projects.projects[project].description);
+		$(".project-entry:last").append(formattedProjectTitle + formattedProjectDates + formattedProjectDescription);
+		for (image in projects.projects[project].images) {
+			var formattedProjectImage = HTMLprojectTitle.replace("%data%",projects.projects[project].images[image]);
+			$(".project-entry:last").append(formattedProjectImage);
+		}
+	}
+}
+
+projects.display();
 
 $(document).click(function(loc) {
 	logClicks(loc.pageX,loc.pageY);
