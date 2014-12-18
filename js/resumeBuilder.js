@@ -12,7 +12,7 @@ var bio = {
 	},
 	"picture_url" : "http://www.fcps.edu/islandcreekes/ecology/Amphibians/Bullfrog/bull2.jpg",
 	"welcome_message" : "Thanks for visiting my resume!",
-	"skills" : ["Ruby", "Python", "Javascript"]
+	"skills" : ["Ruby", " Python ", " Javascript"]
 };
 
 var projects = {
@@ -81,6 +81,11 @@ var education = {
 		]
 };
 
+
+if (bio.skills) {
+	$("#header").append(HTMLskillsStart);
+	$("#skills").append(HTMLskills.replace("%data%", bio.skills));
+}
 
 
 //var formattedName = HTMLheaderName.replace("%data%", bio.name);
