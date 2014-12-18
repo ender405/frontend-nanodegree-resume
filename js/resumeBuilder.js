@@ -33,19 +33,17 @@ var work = {
 			"employer" : "McKinsey and Company",
 			"title" : "Business Analyst",
 			"location" : "Boston, MA",
-			"startDate" : 2006,
-			"endDate" : 2008
+			"startDate" : "2006",
+			"endDate" : "2008",
+			"description" : "Analyze markets and business strategy"
 		},
 		{
 			"employer" : "Maverick Capital",
 			"title" : "Managing Director",
 			"location" : "Philadelphia, PA",
-			"startDate" : 2008,
-			"endDate" : "Present"
-		},
-		{
-			"employer" : "Test",
-			"title" : "Test"
+			"startDate" : "2008",
+			"endDate" : "Present",
+			"description" : "Research and execute on investments in healthcare"
 		}
 	]
 	
@@ -92,12 +90,13 @@ if (bio.skills) {
 };
 
 for (job in work.jobs) {
-	console.log(job);
 	$("#workExperience").append(HTMLworkStart);
 	var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
 	var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
-	console.log(formattedEmployer + formattedTitle)
-	$(".work-entry:last").append(formattedEmployer + formattedTitle);
+	var formattedDates = HTMLworkDates.replace("%data%",work.jobs[job].startDate + " - " + work.jobs[job].endDate);
+	var formattedWorkLocation = HTMLworkLocation.replace("%data%",work.jobs[job].location);
+	var formattedWorkDescription = HTMLworkDescription.replace("%data%",work.jobs[job].description);
+	$(".work-entry:last").append(formattedEmployer + formattedTitle + formattedDates + formattedWorkLocation + formattedWorkDescription);
 };
 
 //var formattedName = HTMLheaderName.replace("%data%", bio.name);
