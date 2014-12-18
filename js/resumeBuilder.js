@@ -83,6 +83,7 @@ var education = {
 		]
 };
 
+$("#header").append(HTMLheaderName.replace("%data%",bio.name));
 
 if (bio.skills) {
 	$("#header").append(HTMLskillsStart);
@@ -103,10 +104,18 @@ function displayWork() {
 
 displayWork();
 
+$("#main").append(internationalizeButton);
+
 $(document).click(function(loc) {
 	logClicks(loc.pageX,loc.pageY);
 
 });
+
+function inName(name) {
+	var firstName = name.split(" ")[0];
+	var lastName = name.split(" ")[1];
+	return firstName + " " + lastName.toUpperCase();
+}
 
 //var formattedName = HTMLheaderName.replace("%data%", bio.name);
 //var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
