@@ -42,6 +42,10 @@ var work = {
 			"location" : "Philadelphia, PA",
 			"startDate" : 2008,
 			"endDate" : "Present"
+		},
+		{
+			"employer" : "Test",
+			"title" : "Test"
 		}
 	]
 	
@@ -85,8 +89,16 @@ var education = {
 if (bio.skills) {
 	$("#header").append(HTMLskillsStart);
 	$("#skills").append(HTMLskills.replace("%data%", bio.skills));
-}
+};
 
+for (job in work.jobs) {
+	console.log(job);
+	$("#workExperience").append(HTMLworkStart);
+	var formattedEmployer = HTMLworkEmployer.replace("%data%",work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%",work.jobs[job].title);
+	console.log(formattedEmployer + formattedTitle)
+	$(".work-entry:last").append(formattedEmployer + formattedTitle);
+};
 
 //var formattedName = HTMLheaderName.replace("%data%", bio.name);
 //var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
