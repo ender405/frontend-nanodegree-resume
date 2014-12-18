@@ -103,6 +103,11 @@ function displayWork() {
 
 displayWork();
 
+$(document).click(function(loc) {
+	logClicks(loc.pageX,loc.pageY);
+
+});
+
 //var formattedName = HTMLheaderName.replace("%data%", bio.name);
 //var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 //var formattedbioPic = HTMLbioPic.replace("%data%", bio.picture_url);
