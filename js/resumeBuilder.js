@@ -12,7 +12,37 @@ var bio = {
 	},
 	"picture_url" : "http://www.fcps.edu/islandcreekes/ecology/Amphibians/Bullfrog/bull2.jpg",
 	"welcome_message" : "Thanks for visiting my resume!",
-	"skills" : ["Ruby", " Python ", " Javascript"]
+	"skills" : ["ruby", "css", "html", "web scraping", "mad alpha", "python", "javascript"]
+};
+
+
+
+
+
+$("#header").prepend(HTMLheaderName.replace("%data%",bio.name) + HTMLheaderRole.replace("%data%",bio.role));
+
+function displayContacts() {
+
+	var mobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
+	var email = HTMLemail.replace("%data%",bio.contacts.email);
+	var github = HTMLgithub.replace("%data%",bio.contacts.github);
+	var twitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
+	var location = HTMLlocation.replace("%data%",bio.contacts.location);
+	$("#topContacts").append(mobile + email + github + twitter + location);
+}
+
+displayContacts();
+
+$("#header").append(HTMLbioPic.replace("%data%",bio.picture_url));
+$("#header").append(HTMLWelcomeMsg.replace("%data%",bio.welcome_message));
+
+if (bio.skills) {
+	$("#header").append(HTMLskillsStart);
+	
+	for (skill in bio.skills) {
+		$("#skills").append(HTMLskills.replace("%data%", bio.skills[skill]));	
+	}
+	
 };
 
 
@@ -36,16 +66,6 @@ var work = {
 		}
 	]
 	
-};
-
-
-
-
-$("#header").append(HTMLheaderName.replace("%data%",bio.name));
-
-if (bio.skills) {
-	$("#header").append(HTMLskillsStart);
-	$("#skills").append(HTMLskills.replace("%data%", bio.skills));
 };
 
 function displayWork() {
