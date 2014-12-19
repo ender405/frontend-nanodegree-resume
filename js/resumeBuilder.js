@@ -120,7 +120,7 @@ var education = {
 			"url" : "http://www.udacity.com"
 		}
 	],
-	"online_courses" : [
+	"onlineCourses" : [
 		{
 			"title" : "Javascript Basics",
 			"school" : "Udacity U",
@@ -143,7 +143,22 @@ education.display = function() {
 		$(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree + formattedSchoolDates + formattedSchoolLocation + formattedSchoolMajor);
 	}
 
+	$("#education").append(HTMLonlineClasses);
+
+	for (course in education.onlineCourses) {
+		$("#education").append(HTMLschoolStart)
+		var formattedOnlineTitle = HTMLonlineTitle.replace("%data%",education.onlineCourses[course].title).replace("#",education.onlineCourses[course].url);
+		var formattedOnlineName = HTMLonlineSchool.replace("%data%",education.onlineCourses[course].school);
+		var formattedOnlineDates = HTMLonlineDates.replace("%data%",education.onlineCourses[course].startDate + " - " + education.onlineCourses[course].endDate);
+		var formattedOnlineURL = HTMLonlineURL.replace("%data%",education.onlineCourses[course].url);
+		$(".education-entry:last").append(formattedOnlineTitle + formattedOnlineName + formattedOnlineDates + formattedOnlineURL);
+	}
+
 };
+
+
+
+
 
 education.display();
 
