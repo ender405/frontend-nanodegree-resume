@@ -125,6 +125,8 @@ projects.display = function() {
 
 projects.display();
 
+$("#mapDiv").append(googleMap);
+
 $(document).click(function(loc) {
 	logClicks(loc.pageX,loc.pageY);
 
@@ -135,6 +137,8 @@ function inName(name) {
 	var lastName = name.split(" ")[1];
 	return firstName + " " + lastName.toUpperCase();
 }
+
+
 
 //var formattedName = HTMLheaderName.replace("%data%", bio.name);
 //var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
