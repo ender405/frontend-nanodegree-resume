@@ -18,7 +18,7 @@ var bio = {
 
 $("#header").prepend(HTMLheaderName.replace("%data%",bio.name) + HTMLheaderRole.replace("%data%",bio.role));
 
-function displayContacts() {
+function displayTopContacts() {
 
 	var mobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
 	var email = HTMLemail.replace("%data%",bio.contacts.email);
@@ -28,7 +28,7 @@ function displayContacts() {
 	$("#topContacts").append(mobile + email + github + twitter + location);
 }
 
-displayContacts();
+displayTopContacts();
 
 $("#header").append(HTMLbioPic.replace("%data%",bio.picture_url));
 $("#header").append(HTMLWelcomeMsg.replace("%data%",bio.welcome_message));
@@ -173,19 +173,21 @@ education.display = function() {
 
 };
 
-
-
-
-
 education.display();
 
-/*
-var HTMLonlineClasses = '<h3>Online Classes</h3>';
-var HTMLonlineTitle = '<a href="#">%data%';
-var HTMLonlineSchool = ' - %data%</a>';
-var HTMLonlineDates = '<div class="date-text">%data%</div>';
-var HTMLonlineURL = '<br><a href="#">%data%</a>';
-*/
+
+function displayBottomContacts() {
+
+	var mobile = HTMLmobile.replace("%data%",bio.contacts.mobile);
+	var email = HTMLemail.replace("%data%",bio.contacts.email);
+	var github = HTMLgithub.replace("%data%",bio.contacts.github);
+	var twitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
+	var location = HTMLlocation.replace("%data%",bio.contacts.location);
+	$("#footerContacts").append(mobile + email + github + twitter + location);
+}
+
+displayBottomContacts();
+
 
 //hide this map until I can figure out how it works
 //$("#mapDiv").append(googleMap);
