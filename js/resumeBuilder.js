@@ -16,9 +16,6 @@ var bio = {
 };
 
 
-
-
-
 $("#header").prepend(HTMLheaderName.replace("%data%",bio.name) + HTMLheaderRole.replace("%data%",bio.role));
 
 function displayContacts() {
@@ -107,7 +104,7 @@ projects.display = function() {
 		var formattedProjectDescription = HTMLprojectDescription.replace("%data%",projects.projects[project].description);
 		$(".project-entry:last").append(formattedProjectTitle + formattedProjectDates + formattedProjectDescription);
 		for (image in projects.projects[project].images) {
-			var formattedProjectImage = HTMLprojectTitle.replace("%data%",projects.projects[project].images[image]);
+			var formattedProjectImage = HTMLprojectImage.replace("%data%",projects.projects[project].images[image]);
 			$(".project-entry:last").append(formattedProjectImage);
 		}
 	}
