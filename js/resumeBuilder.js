@@ -39,38 +39,7 @@ var work = {
 };
 
 
-var education = {
-	"schools" : [
-		{
-			"name" : "Harvard College",
-			"location" : "Cambridge, MA",
-			"degree" : "AB",
-			"majors" : ["History"],
-			"startDate" : 2002,
-			"endDate" : 2006,
-			"url" : "http://www.harvard.edu"
-		},
-		
-		{
-			"name" : "Udacity U",
-			"location" : "Phoenix, AZ",
-			"degree" : "Nano",
-			"majors" : ["Web Programming"],
-			"startDate" : 2014,
-			"endDate" : 2014,
-			"url" : "http://www.udacity.com"
-		}
-	],
-	"online_courses" : [
-		{
-			"title" : "Javascript Basics",
-			"school" : "Udacity U",
-			"startDate" : 2014,
-			"endDate" : 2014,
-			"url" : "http://www.udacity.edu"
-		}
-		]
-};
+
 
 $("#header").append(HTMLheaderName.replace("%data%",bio.name));
 
@@ -96,6 +65,7 @@ displayWork();
 //remove internationalize button for now until I can style with CSS
 //$("#main").append(internationalizeButton);
 
+// projects data and display code
 
 var projects = {
 	"projects" : [
@@ -125,7 +95,68 @@ projects.display = function() {
 
 projects.display();
 
-$("#mapDiv").append(googleMap);
+
+// education data and display code
+
+var education = {
+	"schools" : [
+		{
+			"name" : "Harvard College",
+			"location" : "Cambridge, MA",
+			"degree" : "AB",
+			"majors" : ["History"],
+			"startDate" : "2002",
+			"endDate" : "2006",
+			"url" : "http://www.harvard.edu"
+		},
+		
+		{
+			"name" : "Udacity U",
+			"location" : "Phoenix, AZ",
+			"degree" : "Nano",
+			"majors" : ["Web Programming"],
+			"startDate" : "2014",
+			"endDate" : "Present",
+			"url" : "http://www.udacity.com"
+		}
+	],
+	"online_courses" : [
+		{
+			"title" : "Javascript Basics",
+			"school" : "Udacity U",
+			"startDate" : "2014",
+			"endDate" : "2014",
+			"url" : "http://www.udacity.edu"
+		}
+		]
+};
+
+education.display = function() {
+
+	for (school in education.schools) {
+		$("#education").append(HTMLschoolStart);
+		var formattedSchoolName = HTMLschoolName.replace("%data%",education.schools[school].name).replace("#",education.schools[school].url);
+		var formattedSchoolDegree = HTMLschoolDegree.replace("%data%",education.schools[school].degree);
+		var formattedSchoolDates = HTMLschoolDates.replace("%data%",education.schools[school].startDate + " - " + education.schools[school].endDate);
+		var formattedSchoolLocation = HTMLschoolLocation.replace("%data%",education.schools[school].location);
+		var formattedSchoolMajor = HTMLschoolMajor.replace("%data%",education.schools[school].majors[0]);
+		$(".education-entry:last").append(formattedSchoolName + formattedSchoolDegree + formattedSchoolDates + formattedSchoolLocation + formattedSchoolMajor);
+	}
+
+};
+
+education.display();
+
+/*
+var HTMLonlineClasses = '<h3>Online Classes</h3>';
+var HTMLonlineTitle = '<a href="#">%data%';
+var HTMLonlineSchool = ' - %data%</a>';
+var HTMLonlineDates = '<div class="date-text">%data%</div>';
+var HTMLonlineURL = '<br><a href="#">%data%</a>';
+*/
+
+//hide this map until I can figure out how it works
+//$("#mapDiv").append(googleMap);
 
 $(document).click(function(loc) {
 	logClicks(loc.pageX,loc.pageY);
